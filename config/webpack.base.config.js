@@ -18,10 +18,13 @@ module.exports = {
         options: { configFileName: path.resolve(__dirname, '../tsconfig.json') }
       }, {// 加载angular2模板
         loader: 'angular2-template-loader'
-      }]
+      }],
     }, {
       test: /\.html$/,
       loader: 'html-loader'
+    }, {// css加载器
+      test: /\.css$/,
+      loader: 'raw-loader'
     }]
   },
   plugins: [
