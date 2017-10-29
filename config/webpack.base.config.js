@@ -1,6 +1,6 @@
-let path = require('path')
-let HtmlWebpackPlugin = require('html-webpack-plugin')
-let webpack = require('webpack')
+var path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var webpack = require('webpack')
 module.exports = {
   entry: {
     'polyfills': path.resolve(__dirname, '../src/polyfills.ts'),
@@ -15,7 +15,7 @@ module.exports = {
       test: /\.ts$/,
       loaders: [{// 这个loader用于加载ts文件
         loader: 'awesome-typescript-loader',
-        options: { configFileName: path.resolve(__dirname, '../tsconfig.json') }
+        options: {configFileName: path.resolve(__dirname, '../tsconfig.json')}
       }, {// 加载angular2模板
         loader: 'angular2-template-loader'
       }],

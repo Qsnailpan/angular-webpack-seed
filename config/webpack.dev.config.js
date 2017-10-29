@@ -1,7 +1,7 @@
-let merge = require('webpack-merge')
-let baseConfig = require('./webpack.base.config')
-let path = require('path')
-let webpack = require('webpack')
+var merge = require('webpack-merge')
+var baseConfig = require('./webpack.base.config')
+var path = require('path')
+var webpack = require('webpack')
 module.exports = merge(baseConfig, {
   output: {
     path: path.resolve(__dirname, '../dist'),
