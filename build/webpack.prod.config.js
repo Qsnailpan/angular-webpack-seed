@@ -4,6 +4,7 @@ var path = require('path')
 var webpack = require('webpack')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production'
 
 module.exports = merge(baseConfig, {
@@ -11,7 +12,25 @@ module.exports = merge(baseConfig, {
     path: path.resolve(__dirname, '../dist'),
     filename: 'static/js/[name].[chunkhash].js'
   },
+  module: {
+    rules: [{
+      test: /\.css$/,
+      exclude: [path.resolve(__dirname, '../src/app')],
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: 'css-loader'
+      })
+    }, {
+      test: /\.less$/,
+      exclude: [path.resolve(__dirname, '../src/app')],
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', 'less-loader']
+      })
+    }]
+  },
   plugins: [
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
       compress: {
@@ -30,6 +49,7 @@ module.exports = merge(baseConfig, {
         removeComments: true,
         collapseWhitespace: true
       }
-    })
+    }),
+    new ExtractTextPlugin({filename: 'static/styles/[name].[contenthash].css', allChunks: true})
   ]
 })
