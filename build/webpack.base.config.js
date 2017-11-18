@@ -24,6 +24,9 @@ module.exports = {
       }, {// 加载angular2模板
         loader: 'angular2-template-loader'
       }],
+    }, {
+      test: /\.(ts|js)$/,
+      loaders: ['angular-router-loader']
     }, {// 对于app目录下的css文件使用raw-loader加载
       test: /\.css$/,
       include: [path.resolve(__dirname, '../src/app')],
