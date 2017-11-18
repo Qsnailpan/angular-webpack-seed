@@ -1,0 +1,3 @@
+npm install --save @angular/common @angular/compiler @angular/core @angular/forms @angular/platform-browser  @angular/platform-browser-dynamic core-js rxjs zone.js --registry=https://registry.npm.taobao.org
+
+npm install --save-dev express webpack-dev-middleware opn tslint tslint-loader tslint-webpack-plugin tslint-config-standard @types/node angular2-template-loader awesome-typescript-loader html-loader html-webpack-plugin raw-loader rimraf typescript webpack webpack-dev-server webpack-merge --registry=https://registry.npm.taobao.org
