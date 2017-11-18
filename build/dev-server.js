@@ -4,7 +4,13 @@ var config = require('../config')
 var express = require('express')
 var opn = require('opn')
 var path = require('path')
-var devMiddleware = require('webpack-dev-middleware')(webpack(webpackConfig), {
+var compile = webpack(webpackConfig)
+var hotMiddleware = require('webpack-hot-middleware')(compile, {
+  log: function () {
+
+  }
+})
+var devMiddleware = require('webpack-dev-middleware')(compile, {
   publicPath: config.dev.publicPath,
   index: 'index.html',
   quiet: false
@@ -12,6 +18,7 @@ var devMiddleware = require('webpack-dev-middleware')(webpack(webpackConfig), {
 
 var app = express()
 app.use(devMiddleware)
+app.use(hotMiddleware)
 app.use(config.dev.publicPath + 'static', express.static(path.resolve(__dirname, '../static')))
 
 var url = 'http://localhost:' + config.dev.port + config.dev.publicPath

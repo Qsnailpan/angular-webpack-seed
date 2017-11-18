@@ -1,5 +1,4 @@
 var path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack = require('webpack')
 module.exports = {
   entry: {
@@ -8,17 +7,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js']
-    // modules: [path.resolve(__dirname, '../node_modules')]
   },
   module: {
     rules: [{
-      test: /\.ts$/,
-      enforce: 'pre',
-      loader: 'tslint-loader',
-      options: {
-        emitErrors: true
-      }
-    }, {
       test: /\.ts$/,
       loaders: [{// 这个loader用于加载ts文件
         loader: 'awesome-typescript-loader',
