@@ -5,6 +5,6 @@ import { Component } from '@angular/core'
   template: `
     <div>this is home page</div>`
 })
-export class Home {
+export default class Home {
 
 }
